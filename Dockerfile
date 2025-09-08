@@ -1,11 +1,11 @@
-# Sử dụng Tomcat chính thức
+# Sử dụng Tomcat + JDK 17
 FROM tomcat:9.0-jdk17
 
 # Xóa webapps mặc định
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy app của bạn vào Tomcat (chú ý build ra WAR hoặc copy web folder)
-COPY web /usr/local/tomcat/webapps/ch05_ex2_email
+# Copy nguyên thư mục web (đã có WEB-INF/classes, JSP, …)
+COPY web /usr/local/tomcat/webapps/ROOT
 
-# Expose port 8080 (Render sẽ tự động map)
+# Mở cổng 8080
 EXPOSE 8080
